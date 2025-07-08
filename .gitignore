@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+.env
+.env.*.local
+*.local
+
+# testing
+/coverage
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Mac system files
+*.DS_Store
+
+# Optional lockfiles (keep one depending on your package manager)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional: ignore output from Storybook
+/out
+
+# Optional: Next.js
+.next
+
+# Optional: Vite
+/.vite
+
+# Optional: parcel
+.cache
+
+# Optional: react-native
+/android
+/ios
+
+# Optional: eslint cache
+.eslintcache
