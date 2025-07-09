@@ -21,10 +21,7 @@ function App() {
   if (products?.length === 0) return  <h2>No products to show</h2> 
 
   return (
-    <>
-      <h1 className="text-3xl font-bold text-purple-500 mb-4">
-        ReStore
-      </h1>
+    <>  
       <Catalog products={products} />
     </>
   )

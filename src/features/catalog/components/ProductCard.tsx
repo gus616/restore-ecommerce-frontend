@@ -19,7 +19,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
       <div className="px-4 pb-4">
         {/* Title */}
-        <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1">
+        <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1 cursor-pointer">
           {product.name}
         </h3>
 
