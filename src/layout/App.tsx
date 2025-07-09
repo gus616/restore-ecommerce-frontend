@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Product } from '../models/Product';
-import Catalog from '../features/catalog/Catalog';
+import Catalog from '../features/catalog/components/Catalog';
 
 function App() {
 

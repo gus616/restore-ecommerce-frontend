@@ -1,5 +1,6 @@
-import type { Product } from "../../models/Product"
+import type { Product } from "../../../models/Product"
 import ProductCard from "./ProductCard"
+
 
 
 type ProductListProps = {

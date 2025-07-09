@@ -1,5 +1,5 @@
-import type { Product } from '../../models/Product'
-import { formatCurrency } from '../../utils/utils';
+import type { Product } from '../../../models/Product'
+import { formatCurrency } from '../../../utils/utils';
 
 
 type ProductCardProps = {
@@ -20,7 +20,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="px-4 pb-4">
         {/* Title */}
         <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1">
-          {product.description}
+          {product.name}
         </h3>
 
         {/* Rating */}
