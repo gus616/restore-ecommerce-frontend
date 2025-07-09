@@ -7,11 +7,23 @@ type ProductCardProps = {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+
+
+  //random rating generator
+  const generateRandomRating = () => {
+    const rating = Math.floor(Math.random() * 5) + 1; // Generates a number between 1 and 5
+    const reviews = Math.floor(Math.random() * 1000) + 100; // Generates a number between 100 and 1100
+    return { rating, reviews };
+  };
+
+
+  const { rating, reviews } = generateRandomRating();
+
   return (
-<div className="w-60 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 mb-2">
+    <div className="w-60 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 mb-2">
       <a href="#">
         <img
-          src="https://m.media-amazon.com/images/I/81KpddXdBYL._AC_SX679_.jpg"
+          src={product.pictureUrl}
           alt="Product"
           className="w-full h-60 object-contain p-4"
         />
@@ -25,8 +37,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
         {/* Rating */}
         <div className="flex items-center text-yellow-500 text-sm mt-1">
-          <span>⭐⭐⭐⭐☆</span>
-          <span className="text-gray-600 text-xs ml-2">(1234)</span>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span key={i}>{i < rating ? '⭐' : '☆'}</span>
+          ))}
+          <span className="text-gray-600 text-xs ml-2">({reviews})</span>
         </div>
 
         {/* Price */}
