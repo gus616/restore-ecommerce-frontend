@@ -1,3 +1,4 @@
+
 export interface Product {
     id: number,
     brand: string,
@@ -6,5 +7,6 @@ export interface Product {
     pictureUrl: string,
     price: number,
     quantityInStock: number,
-    type: string
+    type: string, 
+    images: string[] | []
 };

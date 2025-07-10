@@ -32,10 +32,12 @@ const Product = () => {
     setProduct(data);
   };
 
+
+
   return (
     <div>
         <Navbar />
-        <ProductDetail />
+        {product && <ProductDetail product={product} />}
     </div>
   )
 }
