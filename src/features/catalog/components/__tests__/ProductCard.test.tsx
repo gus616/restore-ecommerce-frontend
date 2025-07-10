@@ -2,6 +2,7 @@
 import { render, screen } from '@testing-library/react';
 import ProductCard from '../ProductCard';
 import type { Product } from '../../../../models/Product';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('ProductCard', () => {
   it('renders the product title', () => {
@@ -18,9 +19,12 @@ describe('ProductCard', () => {
     }
 
     render(
-      <ProductCard
-        product={product}
-      />
+      <MemoryRouter>
+        <ProductCard
+          product={product}
+        />
+      </MemoryRouter>
+
     );
 
     expect(screen.getByText("Death Stranding 2")).toBeInTheDocument();

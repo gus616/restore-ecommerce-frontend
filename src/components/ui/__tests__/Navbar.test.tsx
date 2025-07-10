@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Navbar from "../../../../components/ui/NavBar";
+import Navbar from "../Navbar";
 
 describe('Navbar', () => {
     it('renders logo image', () => {

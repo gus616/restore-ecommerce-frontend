@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import ProductList from "../ProductList";
+import { MemoryRouter } from "react-router-dom";
 
 describe('ProductList', () => {
 
@@ -28,7 +29,7 @@ describe('ProductList', () => {
             }
         ];
 
-        render(<ProductList products={products} />);
+        render(<MemoryRouter><ProductList products={products} /> </MemoryRouter>);
 
         expect(screen.getByText('Death Stranding 2')).toBeInTheDocument();
         expect(screen.getByText('$59.99')).toBeInTheDocument();
