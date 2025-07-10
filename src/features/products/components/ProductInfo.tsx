@@ -46,9 +46,9 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                 </div>
 
                 {/* Free returns */}
-                <div className="flex flex-col items-center gap-2">
-                    <RotateCw size={18} className="text-yellow-500" />
-                    <span className="text-[#2162a1]">30-day free returns</span>
+                <div className="flex flex-col items-center gap-2 ">
+                    <RotateCw size={18} className="text-yellow-500 " />
+                    <span className="text-[#2162a1] hover:text-yellow-600 transition-colors cursor-pointer">30-day free returns</span>
                 </div>
 
                 {/* Amazon shipping */}

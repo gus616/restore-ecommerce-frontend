@@ -16,7 +16,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
                     <img
                         src={img}
                         key={i}
-                        onClick={() => setSelectedImage(img)}
+                        onMouseEnter={() => setSelectedImage(img)}
                         className={`h-16 w-16 object-contain border rounded p-1 cursor-pointer transition-all duration-200 ${img === selectedImage ? 'ring-2 ring-yellow-500' : ''
                             }`}
                     />
