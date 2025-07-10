@@ -1,3 +1,4 @@
+import { Link, useNavigate } from 'react-router-dom';
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils';
 
@@ -7,7 +8,7 @@ type ProductCardProps = {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-
+  const navigate = useNavigate();
 
   //random rating generator
   const generateRandomRating = () => {
@@ -19,19 +20,26 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   const { rating, reviews } = generateRandomRating();
 
+
+  const navigateToDetail = (id: number) => {
+    navigate(`/detail/${id}`, { state: { productId: id } });
+  };
+
   return (
     <div className="w-60 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 mb-2">
-      <a href="#">
+      <Link to={`/detail/${product.id}`} className="block">
         <img
           src={product.pictureUrl}
           alt="Product"
           className="w-full h-60 object-contain p-4"
         />
-      </a>
+      </Link>
 
       <div className="px-4 pb-4">
         {/* Title */}
-        <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1 cursor-pointer">
+        <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1 cursor-pointer"
+          onClick={() => navigateToDetail(product.id)}
+          >
           {product.name}
         </h3>
 
