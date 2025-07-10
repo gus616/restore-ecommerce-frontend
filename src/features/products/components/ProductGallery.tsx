@@ -25,7 +25,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
             </div>
 
             {/* Main Image */}
-            <div className="w-full h-[400px] flex items-center justify-center border rounded bg-white">
+            <div className="w-full h-[400px] flex items-center justify-center bg-white">
                 <img
                     src={selectedImage}
                     className="max-h-full max-w-full object-contain"
