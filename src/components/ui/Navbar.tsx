@@ -14,6 +14,7 @@ const Navbar = () => {
           {/* Mobile menu toggle */}
           <button
             className="sm:hidden"
+            aria-label='menu'
             onClick={() => setIsMobileOpen(!isMobileOpen)}
           >
             <Menu size={24} />
@@ -40,7 +41,8 @@ const Navbar = () => {
         <div className="hidden sm:flex flex-grow max-w-xl">
           <input
             type="text"
-            placeholder="Search Amazon"
+            aria-label="search-input-desktop"
+            placeholder="Search products, brands and more"
             className="flex-grow px-4 py-2 bg-white text-black rounded-l-md focus:outline-none"
           />
           <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-r-md">
@@ -73,7 +75,7 @@ const Navbar = () => {
       <div className="mt-3 sm:hidden">
         <input
           type="text"
-          placeholder="Search Amazon"
+          placeholder="Search products, brands and more"
           className="w-full px-4 py-2 bg-white text-black rounded-md"
         />
       </div>
