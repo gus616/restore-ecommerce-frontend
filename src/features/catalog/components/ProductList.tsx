@@ -8,7 +8,6 @@ type ProductListProps = {
 }
 
 const ProductList = ({ products }: ProductListProps) => {
-  if (products?.length === 0) return <h1 className="text-3xl">No products to show.</h1>
 
   return (
     <section className="bg-gray-50">

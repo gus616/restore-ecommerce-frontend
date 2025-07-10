@@ -1,6 +1,7 @@
 import { ShoppingCart, MapPin, Menu } from 'lucide-react';
 import { useState } from 'react';
 import logo from '../../assets/restore-white-logo.png';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -21,11 +22,14 @@ const Navbar = () => {
           </button>
 
           {/* Logo */}
-          <img
-            src={logo}
-            alt="logo"
-            className="h-20 sm:h-20 w-auto object-contain"
-          />
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="logo"
+              className="h-20 sm:h-20 w-auto object-contain"
+            />
+          </NavLink>
+
 
           {/* Delivery Info (hidden on mobile) */}
           <div className="hidden sm:flex flex-col text-xs leading-tight">

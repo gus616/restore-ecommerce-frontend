@@ -1,8 +1,7 @@
 import type { Product } from '../models/Product'
 import ProductList from '../features/catalog/components/ProductList'
 import { useEffect, useState } from 'react'
-import Navbar from '../components/ui/Navbar';
-
+import Navbar from '../components/ui/Navbar'
 const Catalog = () => {
 
 
@@ -20,11 +19,10 @@ const Catalog = () => {
         setProducts(data);
     }
 
-    if (products?.length === 0) return <h2>No products to show</h2>
 
     return (
         <>
-            <Navbar />
+            <Navbar />            
             <ProductList products={products} />
         </>
     )
