@@ -1,6 +1,6 @@
 import { ShoppingCart, MapPin, Menu } from 'lucide-react';
 import { useState } from 'react';
-import logo from '../../assets/restore-white-logo.png';
+import amazntLogo from '../../assets/amazont-logo-white.png';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink to="/">
             <img
-              src={logo}
+              src={amazntLogo}
               alt="logo"
               className="h-20 sm:h-20 w-auto object-contain"
             />

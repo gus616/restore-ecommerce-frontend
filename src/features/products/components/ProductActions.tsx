@@ -2,6 +2,9 @@ import React from 'react'
 import type { Product } from '../../../models/Product';
 import { formatCurrency } from '../../../utils/utils';
 import { MapPin } from 'lucide-react';
+import ProductShippingDetails from './ProductShippingDetails';
+import ProductActionButtons from './ProductActionButtons';
+import ProductQuantitySelect from './ProductQuantitySelect';
 
 
 type ProductActionsProps = {
@@ -33,21 +36,11 @@ const ProductActions = ({ product }: ProductActionsProps) => {
                 </div>
 
                 <div className="flex flex-col flex-start gap-2 mt-2">
-                    <h2 className="text-xl text-[#067d62]">Available</h2>
-                    <label htmlFor="quantity" className="text-sm text-gray-700 mb-1">
-                        Quantity:
-                    </label>
-                    <select
-                        id="quantity"
-                        className="border rounded px-2 py-1 text-sm"
-                        defaultValue={1}
-                    >
-                        {Array.from({ length: Math.min(product.quantityInStock, 10) }, (_, i) => (
-                            <option key={i + 1} value={i + 1}>
-                                {i + 1}
-                            </option>
-                        ))}
-                    </select>
+                    <ProductQuantitySelect quantityInStock={product.quantityInStock} />
+                  
+                    <ProductActionButtons />
+
+                    <ProductShippingDetails />
                 </div>
             </div>
         </div>)
