@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils'
-import { Lock, RotateCw, Truck } from 'lucide-react'
+import { Lock, MessageSquareTextIcon, RotateCw, Truck } from 'lucide-react'
 
 
 type ProductInfoProps = {
@@ -10,7 +10,7 @@ type ProductInfoProps = {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
     return (
-        <div className="space-y-4 text-gray-800">
+        <div className="space-y-4 text-gray-800 w-full">
             {/* Title */}
             <h1 className="text-2xl font-semibold leading-snug">{product.name} </h1>
             {/* Brand */}
@@ -42,7 +42,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                 {/* Secure payment */}
                 <div className="flex flex-col items-center gap-2">
                     <Lock size={18} className="text-yellow-500" />
-                    <span className="text-[#2162a1]">Secure payment</span>
+                    <span className="text-[#2162a1] hover:text-yellow-600 transition-colors cursor-pointer">Secure payment</span>
                 </div>
 
                 {/* Free returns */}
@@ -54,9 +54,10 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                 {/* Amazon shipping */}
                 <div className="flex flex-col items-center gap-2">
                     <Truck size={18} className="text-yellow-500" />
-                    <span className="text-[#2162a1]">Shipped by ReStore</span>
+                    <span className="text-[#2162a1] hover:text-yellow-600 transition-colors cursor-pointer">Shipped by ReStore</span>
                 </div>
             </div>
+              <hr className="border-t border-gray-200 my-2 w-full" />
 
             {/* Other vendors*/}
             <div>
@@ -67,10 +68,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
             {/* Description */}
 
-            <div>
-                <h2 className="text-md font-semibold mb-1">
-                    Product Description
-                </h2>
+            <div>         
                 <p className="text-sm text-gray-700">
                     {product.description || 'No description available.'}
                 </p>
@@ -85,6 +83,13 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                     <li>Feature 2</li>
                     <li>Feature 3</li>
                 </ul>
+
+                
+            </div>
+
+            <div className="flex items-center gap-1">
+                <MessageSquareTextIcon size={18} className="text-gray-400" />
+                <span className="text-sm text-[#2162a1]">Inform about a problem with this product.</span>
             </div>
 
             <hr className="border-t border-gray-200 my-2 w-full" />
