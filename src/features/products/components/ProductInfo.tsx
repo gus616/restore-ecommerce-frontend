@@ -2,6 +2,7 @@ import React from 'react'
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils'
 import { Lock, MessageSquareTextIcon, RotateCw, Truck } from 'lucide-react'
+import Divider from '../../../components/ui/Divider'
 
 
 type ProductInfoProps = {
@@ -26,7 +27,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                     ({123}) ratings
                 </span>
             </div>
-            <hr className="border-t border-gray-200 my-2 w-full" />
+           <Divider />
 
             {/* Category */}
             <p className="text-sm text-gray-500">Category: <span className="text-black">{product.type}</span></p>
@@ -57,7 +58,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                     <span className="text-[#2162a1] hover:text-yellow-600 transition-colors cursor-pointer">Shipped by ReStore</span>
                 </div>
             </div>
-              <hr className="border-t border-gray-200 my-2 w-full" />
+             <Divider />
 
             {/* Other vendors*/}
             <div>
@@ -92,8 +93,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                 <span className="text-sm text-[#2162a1]">Inform about a problem with this product.</span>
             </div>
 
-            <hr className="border-t border-gray-200 my-2 w-full" />
-
+            <Divider />
 
         </div>
     )

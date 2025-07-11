@@ -5,6 +5,8 @@ import { MapPin } from 'lucide-react';
 import ProductShippingDetails from './ProductShippingDetails';
 import ProductActionButtons from './ProductActionButtons';
 import ProductQuantitySelect from './ProductQuantitySelect';
+import Divider from '../../../components/ui/Divider';
+import ProductWishlistSelector from './ProductWishlistSelector';
 
 
 type ProductActionsProps = {
@@ -17,7 +19,7 @@ const ProductActions = ({ product }: ProductActionsProps) => {
 
 
     return (
-        <div className="border border-gray-300 rounded-md p-2 shadow-sm h-[700px] md:w-[200px] flex flex-col justify-between">
+        <div className="border border-gray-300 rounded-md p-2 shadow-sm h-auto md:w-[200px] flex flex-col justify-between">
             {/* Price */}
             <div className="flex flex-col flex-start gap-2 p-2">
                 <p className="text-xl font-bold text-gray-900">
@@ -37,11 +39,16 @@ const ProductActions = ({ product }: ProductActionsProps) => {
 
                 <div className="flex flex-col flex-start gap-2 mt-2">
                     <ProductQuantitySelect quantityInStock={product.quantityInStock} />
-                  
+
                     <ProductActionButtons />
 
                     <ProductShippingDetails />
+
+
                 </div>
+                <Divider />
+
+                <ProductWishlistSelector />
             </div>
         </div>)
 
