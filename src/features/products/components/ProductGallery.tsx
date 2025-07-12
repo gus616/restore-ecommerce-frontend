@@ -9,7 +9,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
     const [selectedImage, setSelectedImage] = useState(images[0]);
 
     return (
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col-reverse md:flex-row gap-4">
             {/* Thumbnails */}
             <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-x-hidden">
                 {images.map((img, i) => (
