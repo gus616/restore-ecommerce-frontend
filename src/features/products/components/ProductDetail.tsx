@@ -3,6 +3,7 @@ import ProductInfo from './ProductInfo'
 import ProductActions from './ProductActions'
 import type { Product } from '../../../models/Product'
 import Divider from '../../../components/ui/Divider'
+import ProductRating from './ProductRating'
 
 
 type ProductDetailProps = {
@@ -36,6 +37,16 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
             {/*Brands*/}
             <Divider />
             {/*Comment and review section*/}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-30 p-4">
+                <div className="md:col-span-3">
+                    <ProductRating />
+                </div>
+                <div className="md:col-span-8">
+                    <h2 className="text-2xl font-semibold mb-4">Comments and Reviews</h2>
+                       {/* Placeholder for comments and reviews */}
+                    <p>No comments or reviews yet.</p>
+                </div>
+            </div>
         </>
 
     )
