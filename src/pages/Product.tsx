@@ -37,7 +37,7 @@ const Product = () => {
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto px-10 py-15">
+      <div className="w-full container mx-auto px-10 py-15">
         {product && <ProductDetail product={product} />}
       </div>
 

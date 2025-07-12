@@ -1,4 +1,4 @@
-import { ShoppingCart, MapPin, Menu } from 'lucide-react';
+import { ShoppingCart, MapPin, Menu, Search } from 'lucide-react';
 import { useState } from 'react';
 import amazntLogo from '../../assets/amazont-logo-white.png';
 import { NavLink } from 'react-router-dom';
@@ -50,7 +50,7 @@ const Navbar = () => {
             className="flex-grow px-4 py-2 bg-white text-black rounded-l-md focus:outline-none"
           />
           <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-r-md">
-            🔍
+            <Search size={20} />
           </button>
         </div>
 

@@ -3,7 +3,7 @@ import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils'
 import { Lock, MessageSquareTextIcon, RotateCw, Truck } from 'lucide-react'
 import Divider from '../../../components/ui/Divider'
-
+import ProductBanner from './ProductBanner'
 
 type ProductInfoProps = {
     product: Product
@@ -27,7 +27,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                     ({123}) ratings
                 </span>
             </div>
-           <Divider />
+            <Divider />
 
             {/* Category */}
             <p className="text-sm text-gray-500">Category: <span className="text-black">{product.type}</span></p>
@@ -58,7 +58,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
                     <span className="text-[#2162a1] hover:text-yellow-600 transition-colors cursor-pointer">Shipped by ReStore</span>
                 </div>
             </div>
-             <Divider />
+            <Divider />
 
             {/* Other vendors*/}
             <div>
@@ -69,31 +69,34 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
             {/* Description */}
 
-            <div>         
+            <div>
                 <p className="text-sm text-gray-700">
                     {product.description || 'No description available.'}
                 </p>
             </div>
 
-            
+
             {/* Bullet Points / Features (if any) */}
 
-            <div>       
+            <div>
                 <ul className="list-disc list-inside text-sm text-gray-700">
                     <li>Feature 1</li>
                     <li>Feature 2</li>
                     <li>Feature 3</li>
                 </ul>
 
-                
+
             </div>
 
             <div className="flex items-center gap-1">
                 <MessageSquareTextIcon size={18} className="text-gray-400" />
-                <span className="text-sm text-[#2162a1]">Inform about a problem with this product.</span>
+                <span className="text-sm text-[#2162a1] cursor-pointer">Inform about a problem with this product.</span>
             </div>
 
             <Divider />
+
+            <ProductBanner />
+
 
         </div>
     )
