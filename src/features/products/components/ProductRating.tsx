@@ -4,6 +4,7 @@ import ProductStarRating from './ProductStarRating';
 import Divider from '../../../components/ui/Divider';
 import ExpandablePanel from '../../../components/ui/ExpandablePanel';
 import ProductStarRatingStarsContainer from './ProductStarRatingStarsContainer';
+import ProductReviewShareRatingInfo from './ProductReviewShareRatingInfo';
 
 const ProductRating = () => {
 
@@ -38,6 +39,10 @@ const ProductRating = () => {
                 content={content.content}
                 contentSecondary={content.contentSecondary}
             />
+
+            <Divider />
+
+            <ProductReviewShareRatingInfo />
 
             <Divider />
         </div>
