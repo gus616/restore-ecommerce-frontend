@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import type { Product } from "../models/Product";
 import Navbar from "../components/ui/Navbar";
 import ProductDetail from "../features/products/components/ProductDetail";
+import Footer from "../components/ui/Footer";
 
 const Product = () => {
   const { id } = useParams<{ id: string }>();
@@ -40,6 +41,7 @@ const Product = () => {
       <div className="w-full container mx-auto px-10 py-15">
         {product && <ProductDetail product={product} />}
       </div>
+      <Footer />
 
     </div>
   )

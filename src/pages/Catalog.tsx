@@ -2,6 +2,7 @@ import type { Product } from '../models/Product'
 import ProductList from '../features/catalog/components/ProductList'
 import { useEffect, useState } from 'react'
 import Navbar from '../components/ui/Navbar'
+import Footer from '../components/ui/Footer'
 const Catalog = () => {
 
 
@@ -22,8 +23,9 @@ const Catalog = () => {
 
     return (
         <>
-            <Navbar />            
-            <ProductList products={products} />
+            <Navbar />
+             <ProductList products={products} />
+            <Footer showGoToTop={false} />
         </>
     )
 }
