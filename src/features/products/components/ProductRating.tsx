@@ -44,7 +44,7 @@ const ProductRating = () => {
 
             <ProductReviewShareRatingInfo />
 
-            <Divider />
+            <Divider />            
         </div>
     )
 }
