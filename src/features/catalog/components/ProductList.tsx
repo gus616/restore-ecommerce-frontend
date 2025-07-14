@@ -1,5 +1,7 @@
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { Product } from "../../../models/Product"
 import ProductCard from "./ProductCard"
+import ProductPagination from "../../products/components/ProductPagination"
 
 
 
@@ -8,6 +10,14 @@ type ProductListProps = {
 }
 
 const ProductList = ({ products }: ProductListProps) => {
+
+  if (!products || products.length === 0) {
+    return (
+      <div className="text-center py-10">
+        <h2 className="text-2xl font-bold text-gray-700">No Products Found</h2>
+      </div>
+    )
+  }
 
   return (
     <section className="bg-gray-50">
@@ -19,6 +29,8 @@ const ProductList = ({ products }: ProductListProps) => {
           ))
         }
       </div>
+      {/*Pagination */}
+      <ProductPagination paginationSize={5} currentPage={1} />
     </section>
 
   )
