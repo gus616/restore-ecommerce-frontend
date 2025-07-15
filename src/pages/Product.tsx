@@ -4,10 +4,16 @@ import type { Product } from "../models/Product";
 import Navbar from "../components/ui/Navbar";
 import ProductDetail from "../features/products/components/ProductDetail";
 import Footer from "../components/ui/Footer";
+import { useGetProductDetailQuery } from "../features/api/catalogApi";
 
 const Product = () => {
   const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<Product>();
+
+
+  const { data: product, isLoading, isError } = useGetProductDetailQuery(id || "");
+
+/*  old implementation using fetch API
+const [product, setProduct] = useState<Product>();
 
 
   useEffect(() => {
@@ -31,8 +37,19 @@ const Product = () => {
     }
 
     setProduct(data);
-  };
+  }; */
 
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
+
+  if (isError || !product) {
+    return <div className="flex justify-center items-center h-screen">Error loading product</div>;
+  }
+
+  if (!product) {
+    return <div className="flex justify-center items-center h-screen">Product not found</div>;
+  }
 
 
   return (

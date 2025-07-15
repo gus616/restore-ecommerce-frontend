@@ -4,8 +4,6 @@ import ProductActions from './ProductActions'
 import type { Product } from '../../../models/Product'
 import Divider from '../../../components/ui/Divider'
 import ProductRating from './ProductRating'
-import { CircleUser, User, UserRound } from 'lucide-react'
-import ProductUserComment from './ProductUserCommentContainer'
 import ProductUserCommentContainer from './ProductUserCommentContainer'
 
 

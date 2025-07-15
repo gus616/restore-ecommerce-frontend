@@ -1,40 +1,54 @@
-import type { Product } from '../models/Product'
 import ProductList from '../features/catalog/components/ProductList'
-import { useEffect, useState } from 'react'
 import Navbar from '../components/ui/Navbar'
 import Footer from '../components/ui/Footer'
-import type { CatalogueFilter } from '../models/CatalogueFilter'
 import FilterMenu from '../features/catalog/components/FilterMenu'
+import { useGetFiltersQuery, useGetProductsQuery } from '../features/api/catalogApi'
 const Catalog = () => {
 
+    const { data: products, isLoading, isError } = useGetProductsQuery();
 
-    const [products, setProducts] = useState<Product[]>([]);
+    const { data: filters } = useGetFiltersQuery();
 
-    const [filters, setFilters] = useState<CatalogueFilter>();
+    /* 
+    Old implementation using fetch API
+        const [products, setProducts] = useState<Product[]>([]);
+    
+        const [filters, setFilters] = useState<CatalogueFilter>(); 
+        
+        const host = "https://localhost:7014/api"; 
+    /*     useEffect(() => {
+            fetchProducts();
+            fetchFilters();
+        }, []);
+    
+        const fetchProducts = async () => {
+            const res = await fetch(host + '/Products');
+            const data = await res.json();
+            setProducts(data);
+        }
+    
+        const fetchFilters = async () => {
+            const res = await fetch(host + '/Products/filters');
+            if (!res.ok) {
+                throw new Error('Failed to fetch filters');
+            }
+    
+            const data = await res.json();
+            console.log(data);
+            setFilters(data);
+        }; */
 
-    const host = "https://localhost:7014/api";
-
-    useEffect(() => {
-        fetchProducts();
-        fetchFilters();
-    }, []);
-
-    const fetchProducts = async () => {
-        const res = await fetch(host + '/Products');
-        const data = await res.json();
-        setProducts(data);
+    if (isLoading) {
+        return <div className="flex justify-center items-center h-screen">Loading...</div>;
     }
 
-    const fetchFilters = async () => {
-        const res = await fetch(host + '/Products/filters');
-        if (!res.ok) {
-            throw new Error('Failed to fetch filters');
-        }
+    if (isError) {
+        return <div className="flex justify-center items-center h-screen">Error loading products</div>;
+    }
 
-        const data = await res.json();
-        console.log(data);
-        setFilters(data);
-    };
+    if (!products || !filters) {
+        return <div className="flex justify-center items-center h-screen">No products available</div>;
+    }
 
     return (
         <>
@@ -48,7 +62,7 @@ const Catalog = () => {
                 </div>
 
             </div>
-            <Footer showGoToTop={false} />
+            <Footer showGoToTop={true} />
         </>
     )
 }
