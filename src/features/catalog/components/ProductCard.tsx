@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils';
+import ProductStarRating from '../../products/components/ProductStarRating';
+import ProductStarRatingStarsContainer from '../../products/components/ProductStarRatingStarsContainer';
 
 
 type ProductCardProps = {
@@ -39,15 +41,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
         {/* Title */}
         <h3 className="text-sm font-medium text-gray-800 hover:text-blue-600 leading-tight line-clamp-2 mt-1 cursor-pointer"
           onClick={() => navigateToDetail(product.id)}
-          >
+        >
           {product.name}
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center text-yellow-500 text-sm mt-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i}>{i < rating ? '⭐' : '☆'}</span>
-          ))}
+        <div className="flex items-center text-yellow-500 text-sm mt-1 py-1">
+
+          {
+            <ProductStarRatingStarsContainer rating={rating} isReview={true}/>
+
+          }
           <span className="text-gray-600 text-xs ml-2">({reviews})</span>
         </div>
 

@@ -4,6 +4,7 @@ import { formatCurrency } from '../../../utils/utils'
 import { Lock, MessageSquareTextIcon, RotateCw, Truck } from 'lucide-react'
 import Divider from '../../../components/ui/Divider'
 import ProductBanner from './ProductBanner'
+import ProductStarRatingStarsContainer from './ProductStarRatingStarsContainer'
 
 type ProductInfoProps = {
     product: Product
@@ -21,7 +22,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             {/* Rating */}
             <div className="flex items-center text-yellow-500 text-sm gap-2">
                 <span>
-                    {'⭐'.repeat(3)}{'☆'.repeat(2)}
+                    <ProductStarRatingStarsContainer rating={Math.floor(Math.random() * 5) + 1} isReview={true} />
                 </span>
                 <span className="text-gray-600 text-xs">
                     ({123}) ratings
