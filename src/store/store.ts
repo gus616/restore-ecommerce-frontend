@@ -2,11 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import {useDispatch, useSelector } from "react-redux";
 import { catalogApi } from "../features/api/catalogApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
-
+import cartReducer from "./slices/cartSlice";
 
 export const store = configureStore({
     reducer: {
         [catalogApi.reducerPath] : catalogApi.reducer,
+        cart: cartReducer
     },
 
     middleware: (getDefaultMiddleware) => 

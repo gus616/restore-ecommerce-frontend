@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import type { Product } from "../models/Product";
 import Navbar from "../components/ui/Navbar";

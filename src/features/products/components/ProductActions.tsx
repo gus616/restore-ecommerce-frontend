@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Product } from '../../../models/Product';
 import { formatCurrency } from '../../../utils/utils';
 import { ChevronRight, MapPin } from 'lucide-react';
@@ -7,6 +7,8 @@ import ProductActionButtons from './ProductActionButtons';
 import ProductQuantitySelect from './ProductQuantitySelect';
 import Divider from '../../../components/ui/Divider';
 import ProductWishlistSelector from './ProductWishlistSelector';
+import { useAppDispatch } from '../../../store/store';
+import { addToCart } from '../../../store/slices/cartSlice';
 
 
 type ProductActionsProps = {
@@ -14,8 +16,23 @@ type ProductActionsProps = {
 };
 
 const ProductActions = ({ product }: ProductActionsProps) => {
+    const dispatch = useAppDispatch();
+
+    const [quantitySelected, setQuantitySelected] = useState(1);
 
     if (!product) return null;
+
+
+    const addToCartHandler = () => {
+        dispatch(addToCart({
+            id: product.id,
+            brand: product.brand, description: product.description, name: product.name, price: product.price, quantity: quantitySelected, type: product.type, pictureUrl: product.pictureUrl
+        }));
+    }
+
+    const handleQuantityChange = (quantity: number) => {
+        setQuantitySelected(quantity);
+    };
 
 
     return (
@@ -39,9 +56,9 @@ const ProductActions = ({ product }: ProductActionsProps) => {
                     </div>
 
                     <div className="flex flex-col flex-start gap-2 mt-2">
-                        <ProductQuantitySelect quantityInStock={product.quantityInStock} />
+                        <ProductQuantitySelect quantityInStock={product.quantityInStock} quantityChangeHandler={handleQuantityChange}/>
 
-                        <ProductActionButtons />
+                        <ProductActionButtons addToCart={addToCartHandler}/>
 
                         <ProductShippingDetails />
 
@@ -60,7 +77,7 @@ const ProductActions = ({ product }: ProductActionsProps) => {
                     <p className="text-sm text-gray-600 cursor-pointer">
                         Compare other vendors options for this product
                     </p>
-                    <ChevronRight size={40} className="cursor-pointer"/>
+                    <ChevronRight size={40} className="cursor-pointer" />
                 </div>
 
             </div>
