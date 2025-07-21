@@ -3,17 +3,40 @@ import Button from "../../../components/ui/Button"
 import type { CartItem } from "../../../models/CartItem"
 import { formatCurrency } from "../../../utils/utils"
 import MiniCartItem from "./MiniCartItem"
+import { useAppDispatch } from "../../../store/store"
+import { addToCart, removeFromCart, updateQuantity } from "../../../store/slices/cartSlice"
 
 
 type MiniCartPanelProps = {
     items: CartItem[]
 }
 
-const MiniCartPanel = ({items}: MiniCartPanelProps) => {
-    
+const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
+
+    const dispatch = useAppDispatch();
+
     const getSubtotal = useCallback(() => {
         return items.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
     }, [items]);
+
+    const handleAdd = (item: CartItem) => {
+        dispatch(addToCart({
+            ...item,
+            quantity: 1
+        }));
+    }
+
+    const handleSubtract = (item: CartItem) => {
+        dispatch(updateQuantity({
+            id: item.id,
+            quantity: item.quantity - 1
+        }));
+    }
+
+    const handleRemove = (item: CartItem) => {
+        dispatch(removeFromCart(item.id));
+    };
+
     return (
         <div className="relative">
             {/* Triangle Pointer */}
@@ -35,7 +58,12 @@ const MiniCartPanel = ({items}: MiniCartPanelProps) => {
                 {/* Cart Items */}
                 {
                     items.map((item) => (
-                        <MiniCartItem item={item} key={item.id} />
+                        <MiniCartItem item={item}
+                            key={item.id}
+                            onAdd={handleAdd}
+                            onSubtract={handleSubtract}
+                            onRemove={handleRemove}
+                        />
                     ))
                 }
             </div>
