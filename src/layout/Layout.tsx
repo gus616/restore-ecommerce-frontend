@@ -6,8 +6,6 @@ import Footer from '../components/ui/Footer';
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-    const isCartOpen = false;
-
     const { items } = useAppSelector((state) => state.cart);
 
     return (
@@ -18,8 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <div className="flex flex-1 relative">
                     {/* Page Content */}
                     <main
-                        className={`transition-all duration-300 flex-1 ${isCartOpen ? 'mr-[300px]' : ''
-                            }`}
+                        className="flex-1"
                     >
                         {children}
                     </main>                
@@ -28,8 +25,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Footer />
             </div>{
                 items.length > 0 && (
-                    <div className="min-h-screen bg-white shadow-lg z-50">
-                        <MiniCartPanel />
+                    <div className="min-h-screen bg-white shadow-lg z-50 animate-slide-in-left">
+                        <MiniCartPanel items={items}/>
                     </div>
                 )
             }

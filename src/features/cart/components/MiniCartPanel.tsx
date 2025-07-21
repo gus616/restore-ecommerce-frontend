@@ -1,7 +1,19 @@
+import { useCallback } from "react"
 import Button from "../../../components/ui/Button"
+import type { CartItem } from "../../../models/CartItem"
 import { formatCurrency } from "../../../utils/utils"
+import MiniCartItem from "./MiniCartItem"
 
-const MiniCartPanel = () => {
+
+type MiniCartPanelProps = {
+    items: CartItem[]
+}
+
+const MiniCartPanel = ({items}: MiniCartPanelProps) => {
+    
+    const getSubtotal = useCallback(() => {
+        return items.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
+    }, [items]);
     return (
         <div className="relative">
             {/* Triangle Pointer */}
@@ -13,7 +25,7 @@ const MiniCartPanel = () => {
                 <div className="text-sm flex flex-col mb-2">
                     <div className="flex flex-col justify-between items-center mb-1 mt-2">
                         <span className="text-xs">Subtotal</span>
-                        <span className="font-bold text-red-800">{formatCurrency(1319)}</span>
+                        <span className="font-bold text-red-800">{formatCurrency(getSubtotal())}</span>
                     </div>
                     <Button label="Go to cart" paddingX="3" paddingY="3" fontSize="xs" width={130} />
                 </div>
@@ -21,6 +33,11 @@ const MiniCartPanel = () => {
                 <hr className="w-[129px] border-gray-200 mb-2 mt-2" />
 
                 {/* Cart Items */}
+                {
+                    items.map((item) => (
+                        <MiniCartItem item={item} key={item.id} />
+                    ))
+                }
             </div>
         </div>
 
