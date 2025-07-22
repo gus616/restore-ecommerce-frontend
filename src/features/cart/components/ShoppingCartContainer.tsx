@@ -4,20 +4,28 @@ import type { CartItem } from "../../../models/CartItem"
 import CartItemContainer from "./CartItemContainer"
 import ShoppingCartContainerHeader from "./ShoppingCartContainerHeader"
 import { formatCurrency } from "../../../utils/utils"
+import { useAppDispatch } from "../../../store/store"
+import { clearSelected, selectAll } from "../../../store/slices/cartSlice"
 
 
 type ShoppingCartContainerProps = {
-    items: CartItem[]
+    items: CartItem[],
+    selectedIds?: number[],
+    subtotal?: number
 }
-const ShoppingCartContainer = ({ items }: ShoppingCartContainerProps) => {
-
-    const getSubTotal = useCallback(() => {
-        return items.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
-    }, [items]);
+const ShoppingCartContainer = ({ items, selectedIds, subtotal = 0 }: ShoppingCartContainerProps) => {
+    const dispatch = useAppDispatch();
+    const toggleHandler = (toggle: boolean) => {
+        if(!toggle){
+            dispatch(selectAll());
+        } else {
+            dispatch(clearSelected());
+        }
+    }
     return (
-        <div className="col-span-9 min-h-screen container mx-auto px-10 py-15 bg-gray-200">
+        <div className="sm:flex sm:flex-col sm:h-full col-span-9 min-h-screen container mx-auto px-10 py-15 bg-gray-200">
             <div className="bg-white p-5">
-                <ShoppingCartContainerHeader />
+                <ShoppingCartContainerHeader toggleHandler={toggleHandler}/>
                 <div className="w-full mx-auto flex flex-col items-end justify-end">
                     <span className="text-sm mr-2">Price</span>
                     <Separator />
@@ -31,9 +39,9 @@ const ShoppingCartContainer = ({ items }: ShoppingCartContainerProps) => {
                     ))
                 }
                 <div className="w-full mx-auto flex flex-col items-end justify-end">
-                    <span className="text-xl font-bold text-right mt-2 mb-2">{
-                        `Subtotal (${items.length} product${items.length > 1 ? "s" : ""}): ${formatCurrency(getSubTotal())}`
-                    }</span>
+                    {selectedIds &&<span className="text-xl font-bold text-right mt-2 mb-2">{
+                        `Subtotal (${selectedIds?.length} product${selectedIds?.length > 1 ? "s" : ""}): ${formatCurrency(subtotal)}`
+                    }</span>}
                 </div>
             </div>
         </div>

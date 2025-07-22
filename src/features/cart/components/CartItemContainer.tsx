@@ -2,8 +2,8 @@ import { Checkbox } from '@mui/material'
 import type { CartItem } from '../../../models/CartItem'
 import { formatCurrency, getTomorrowDate } from '../../../utils/utils'
 import CartItemButtons from './CartItemButtons'
-import { useAppDispatch } from '../../../store/store'
-import { addToCart, removeFromCart, updateQuantity } from '../../../store/slices/cartSlice'
+import { useAppDispatch, useAppSelector } from '../../../store/store'
+import { addToCart, removeFromCart, toggleSelectedItem, updateQuantity } from '../../../store/slices/cartSlice'
 import CartActionsContainer from './CartActionsContainer'
 
 
@@ -14,6 +14,8 @@ type CartItemContainerProps = {
 const CartItemContainer = ({ item }: CartItemContainerProps) => {
 
     const dispatch = useAppDispatch();
+
+    const { selectedIds } = useAppSelector((state) => state.cart);
 
     const handleAdd = (item: CartItem) => {
         dispatch(addToCart({
@@ -33,9 +35,15 @@ const CartItemContainer = ({ item }: CartItemContainerProps) => {
         dispatch(removeFromCart(item.id));
     };
 
+    const handleToggleSelect = () => {
+        dispatch(toggleSelectedItem(item.id));
+    }
+
     return (
         <div className="w-full flex justify-start gap-10 py-4 bg-white mb-4">
-            <Checkbox className="text-center" />
+            <Checkbox className="text-center" onChange={handleToggleSelect} checked={
+                selectedIds.includes(item.id)
+            }/>
             <img src={item.pictureUrl} alt="Product" className="w-[150px] h[150px] object-fill" />
 
             {/* Product Details */}
