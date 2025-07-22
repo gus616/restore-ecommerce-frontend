@@ -1,5 +1,6 @@
 import Layout from '../../../layout/Layout';
 import { useAppSelector } from '../../../store/store'
+import CheckoutCard from '../components/CheckoutCard';
 import ShoppingCartContainer from '../components/ShoppingCartContainer';
 
 const ShoppingCart = () => {
@@ -21,7 +22,12 @@ const ShoppingCart = () => {
 
     return (
         <Layout shouldShowCart={false} bgColor="bg-gray-200">
-            <ShoppingCartContainer />
+            <div className="grid grid-cols-12 gap-1 justify-start w-full min-h-screen container mx-auto my-2">
+                <ShoppingCartContainer items={items} />
+                <div className="col-span-3 min-h-screen container mx-auto px-10 py-15 bg-gray-200">
+                    <CheckoutCard />
+                </div>
+            </div>
         </Layout>
     )
 }

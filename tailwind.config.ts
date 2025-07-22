@@ -1,8 +1,19 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}', // <- adjust if your files are elsewhere
+  ],
+  safelist: [
+    {
+      pattern: /bg-(red|green|blue|gray|yellow|black|white)-(100|500)/,
+    },
+    {
+      pattern: /text-(black|white|gray)-(100|500)/,
+    },
+    {
+      pattern: /hover:bg-(red|green|blue|gray|yellow|black|white)-(100|500)/,
+    },
   ],
   theme: {
     extend: {
@@ -18,6 +29,6 @@ const config: Config = {
     },
   },
   plugins: [],
-}
+};
 
-export default config
+export default config;

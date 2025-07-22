@@ -1,44 +1,51 @@
+import React from 'react';
 
 type ButtonProps = {
-    label: string,
-    onClick?: () => void,
-    bgColor?: string,
-    textColor?: string,
-    colorNumber?: number,
-    hoverBgColor?: string,
-    hoverTextColor?: string
-    hoverColorNumber?: number,
-    paddingX?: string
-    paddingY?: string,
-    fontSize?: string,
-    width?: number | null
-}
+  label: string;
+  onClick?: () => void;
+  bgColor?: string;
+  textColor?: string;
+  hoverBgColor?: string;
+  hoverTextColor?: string;
+  paddingX?: string;
+  paddingY?: string;
+  fontSize?: string;
+  width?: number | null;
+};
 
 const Button = ({
-    label,
-    onClick,
-    bgColor = "white",
-    textColor = "black",
-    colorNumber = 500,
-    hoverBgColor = "gray",
-    hoverTextColor = "black",
-    hoverColorNumber = 100,
-    paddingX = "4",
-    paddingY = "4",
-    fontSize = "sm",
-    width = null
+  label,
+  onClick,
+  bgColor = 'white',
+  textColor = 'black',
+  hoverBgColor = 'gray-100',
+  hoverTextColor = 'black',
+  paddingX = '4',
+  paddingY = '4',
+  fontSize = 'sm',
+  width = null,
 }: ButtonProps) => {
-    return (
-        <button className={`${width ? `w-[${width}px]` : "w-full" } rounded-full border ${`px-${paddingX}`} ${`py-${paddingY}`} text-sm ${bgColor === 'white' ? "bg-white" :
-            `bg-${bgColor}-${colorNumber}`
-            }  ${`hover:bg-${hoverBgColor}-${hoverColorNumber}`} cursor-pointer
-               ${`hover: text-${hoverTextColor === 'black' ? "text-black" : `text-${hoverTextColor}-${hoverColorNumber}`}`}
-               ${textColor === 'black' ? "text-black" : `text-${textColor}-${colorNumber}
-               `}
-            `}
-            onClick={onClick}
-        ><span className={`text-${fontSize}`}>{label}</span></button>
-    )
-}
+  const widthClass = width ? `w-[${width}px]` : 'w-full';
 
-export default Button
+  const classes = [
+    widthClass,
+    'rounded-full',
+    'border',
+    `px-${paddingX}`,
+    `py-${paddingY}`,
+    `text-${fontSize}`,
+    `bg-${bgColor}`,
+    `text-${textColor}`,
+    `hover:bg-${hoverBgColor}`,
+    `hover:text-${hoverTextColor}`,
+    'cursor-pointer',
+  ].join(' ');
+
+  return (
+    <button className={classes} onClick={onClick}>
+      <span>{label}</span>
+    </button>
+  );
+};
+
+export default Button;

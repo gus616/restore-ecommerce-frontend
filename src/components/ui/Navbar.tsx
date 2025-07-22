@@ -1,11 +1,13 @@
 import { ShoppingCart, MapPin, Menu, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import amazntLogo from '../../assets/amazont-logo-white.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store/store';
 
 const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const { items } = useAppSelector((state) => state.cart);
 
@@ -77,7 +79,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center relative cursor-pointer">
-            <ShoppingCart size={24} />
+            <ShoppingCart size={24} onClick={() => navigate("/cart") } />
             {totalCartItems > 0 &&
               <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-1 rounded-full">
                 {totalCartItems}
