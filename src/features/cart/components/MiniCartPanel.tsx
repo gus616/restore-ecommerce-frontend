@@ -5,6 +5,7 @@ import { formatCurrency } from "../../../utils/utils"
 import MiniCartItem from "./MiniCartItem"
 import { useAppDispatch } from "../../../store/store"
 import { addToCart, removeFromCart, updateQuantity } from "../../../store/slices/cartSlice"
+import { useNavigate } from "react-router-dom"
 
 
 type MiniCartPanelProps = {
@@ -14,6 +15,8 @@ type MiniCartPanelProps = {
 const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
 
     const dispatch = useAppDispatch();
+
+    const navigate = useNavigate();
 
     const getSubtotal = useCallback(() => {
         return items.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
@@ -50,7 +53,9 @@ const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
                         <span className="text-xs">Subtotal</span>
                         <span className="font-bold text-red-800">{formatCurrency(getSubtotal())}</span>
                     </div>
-                    <Button label="Go to cart" paddingX="3" paddingY="3" fontSize="xs" width={130} />
+                    <Button label="Go to cart" paddingX="3" paddingY="3" fontSize="xs" width={130} 
+                    onClick={() => navigate("/cart")}
+                    />
                 </div>
 
                 <hr className="w-[129px] border-gray-200 mb-2 mt-2" />

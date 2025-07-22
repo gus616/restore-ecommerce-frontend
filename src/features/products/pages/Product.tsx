@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom"
-import type { Product } from "../models/Product";
-import Navbar from "../components/ui/Navbar";
-import ProductDetail from "../features/products/components/ProductDetail";
-import Footer from "../components/ui/Footer";
-import { useGetProductDetailQuery } from "../features/api/catalogApi";
-import Layout from "../layout/Layout";
+import type { Product } from "../../../models/Product";
+import ProductDetail from "../components/ProductDetail";
+import { useGetProductDetailQuery } from "../../api/catalogApi";
+import Layout from "../../../layout/Layout";
 
 const Product = () => {
   const { id } = useParams<{ id: string }>();
@@ -53,11 +51,10 @@ const [product, setProduct] = useState<Product>();
 
 
   return (
-    <Layout>
+    <Layout bgColor="bg-white" shouldShowCart={true}>
       <div className="w-full container mx-auto px-10 py-15">
         {product && <ProductDetail product={product} />}
       </div>
-
     </Layout>
   )
 }

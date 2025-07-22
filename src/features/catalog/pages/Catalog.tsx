@@ -1,7 +1,7 @@
-import ProductList from '../features/catalog/components/ProductList';
-import FilterMenu from '../features/catalog/components/FilterMenu';
-import { useGetFiltersQuery, useGetProductsQuery } from '../features/api/catalogApi';
-import Layout from '../layout/Layout';
+import Layout from "../../../layout/Layout";
+import { useGetFiltersQuery, useGetProductsQuery } from "../../api/catalogApi";
+import FilterMenu from "../components/FilterMenu";
+import ProductList from "../components/ProductList";
 
 const Catalog = () => {
   const { data: products, isLoading, isError } = useGetProductsQuery();
@@ -16,7 +16,7 @@ const Catalog = () => {
   }
 
   return (
-    <Layout>
+    <Layout shouldShowCart={true}>
       <div className="w-full grid md:grid-cols-12 grid-cols-1 gap-2 px-10 py-15">
         <div className="md:col-span-2 sm:flex sm:flex-col sm:items-start sm:justify-start hidden">
           <FilterMenu filter={filters} />
