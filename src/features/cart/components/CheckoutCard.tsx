@@ -1,11 +1,23 @@
+import { useNavigate } from "react-router-dom"
+import { useAppSelector } from "../../../store/store"
 import { formatCurrency } from "../../../utils/utils"
 
 type CheckoutCardProps = {
     productsSelected: number
     subtotal?: number
 }
-const CheckoutCard = ({ productsSelected, subtotal = 0}: CheckoutCardProps) => {
+const CheckoutCard = ({ productsSelected, subtotal = 0 }: CheckoutCardProps) => {
+    const navigate = useNavigate();
 
+    const { user } = useAppSelector((state) => state.auth);
+
+    const checkoutHandler = () => {
+        if (!user) {
+            navigate("/login");
+            return;
+        }
+        navigate("/checkout");
+    }
     return (
         <div className="w-full bg-white p-4 flex flex-col items-start justify-start">
             {productsSelected === 0 && <h2 className="text-xl font-semibold text-left mb-2">No products selected</h2>}
@@ -17,10 +29,8 @@ const CheckoutCard = ({ productsSelected, subtotal = 0}: CheckoutCardProps) => {
             )}
             <div className="flex items-center justify-center w-full p-2">
                 <button className="rounded-full w-full py-2 px-2 bg-yellow-300 hover:bg-yellow-400 cursor-pointer text-xs"
-                    onClick={() => {
-
-                    }}
-                    disabled={productsSelected=== 0}
+                    onClick={checkoutHandler}
+                    disabled={productsSelected === 0}
                 >Proceed to checkout</button>
             </div>
         </div>

@@ -1,4 +1,3 @@
-import { useCallback } from "react"
 import Separator from "../../../components/ui/Separator"
 import type { CartItem } from "../../../models/CartItem"
 import CartItemContainer from "./CartItemContainer"
