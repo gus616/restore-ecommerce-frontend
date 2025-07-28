@@ -4,9 +4,11 @@ import { catalogApi } from "../features/api/catalogApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import cartReducer from "./slices/cartSlice";
 import authReducer from "./slices/authSlice";
+import { authApi } from "../features/auth/api/authApi";
 export const store = configureStore({
     reducer: {
         [catalogApi.reducerPath] : catalogApi.reducer,
+        [authApi.reducerPath] : authApi.reducer,
         cart: cartReducer,
         auth: authReducer
     },

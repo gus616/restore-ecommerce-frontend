@@ -3,15 +3,21 @@ import {  useRef } from "react";
 type LoginPasswordFormProps = {
     authenticator?: string | null;
     onChangeAuthenticator: () => void;
+    isLoading: boolean;
+    onLogin: (identifier: string, password: string) => void;
 }
-const LoginPasswordForm = ({ authenticator, onChangeAuthenticator }: LoginPasswordFormProps) => {
+const LoginPasswordForm = ({ authenticator, onChangeAuthenticator, isLoading, onLogin }: LoginPasswordFormProps) => {
     const passwordRef = useRef<HTMLInputElement>(null);
+
+
     const onSubmitHandler = (event: React.FormEvent) => {
         event.preventDefault();
         // Handle login logic here
         console.log("Login submitted for:", authenticator);
         if (passwordRef.current) {
             console.log("Password:", passwordRef.current.value);
+
+            onLogin(authenticator || "", passwordRef.current.value);
         }
     }
     return (
@@ -34,8 +40,10 @@ const LoginPasswordForm = ({ authenticator, onChangeAuthenticator }: LoginPasswo
                     className="w-full p-2 border border-black rounded mt-2 mb-4"
                     placeholder="Enter your password"
                     ref={passwordRef}
+                    required                  
                 />
                 <button className="rounded-full w-full py-2 px-2 bg-yellow-300 hover:bg-yellow-400 cursor-pointer text-sm"
+                disabled={isLoading}
                 >Login</button>
             </form>
         </div>

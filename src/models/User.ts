@@ -1,10 +1,6 @@
 export interface User {
-    id: string,
-    name: string,
-    address: string,
-    country: string,
-    mobile: string,
-    email:string
-    isPrime: boolean,
+    email: string,
+    phoneNumber: string,
+    userName: string
 }
 
