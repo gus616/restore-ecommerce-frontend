@@ -11,10 +11,14 @@ const Navbar = () => {
 
   const { items } = useAppSelector((state) => state.cart);
 
+  const { user } = useAppSelector((state) => state.auth );
+
+
+
   console.log('Cart items:', items);
   // Calculate total items in cart
 
-  const totalCartItems = useMemo(() =>{
+  const totalCartItems = useMemo(() => {
     return items.reduce((total, item) => total + item.quantity, 0);
   }, [items]);
 
@@ -69,7 +73,7 @@ const Navbar = () => {
         {/* Right: Account, Orders, Cart */}
         <div className="flex items-center gap-4 sm:gap-6 cursor-pointer">
           <div className="hidden sm:block">
-            <p className="text-gray-300 text-xs">Hello, Gus</p>
+            <p className="text-gray-300 text-xs">Hello, {user?.userName || "sign in"}</p>
             <p className="font-semibold hover:text-yellow-700">Account & Lists</p>
           </div>
 
@@ -79,7 +83,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center relative cursor-pointer">
-            <ShoppingCart size={24} onClick={() => navigate("/cart") } />
+            <ShoppingCart size={24} onClick={() => navigate("/cart")} />
             {totalCartItems > 0 &&
               <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-1 rounded-full">
                 {totalCartItems}

@@ -10,7 +10,11 @@ import { useState } from 'react'
 import { useLoginMutation } from '../api/authApi'
 import { useAppDispatch } from '../../../store/store'
 import { setCredentials } from '../../../store/slices/authSlice'
+import { useLocation } from 'react-router-dom'
 const Login = () => {
+  const location = useLocation();
+  const from = location.state?.from || '/';
+
 
   const dispatch = useAppDispatch();
   const [authenticator, setAuthenticator] = useState<string | null>(null);
@@ -31,6 +35,12 @@ const Login = () => {
       }, token: token || '' }));
 
       // Handle successful login (e.g., redirect to catalog page or checkout depending on where the user came from)      
+
+      if(from === '/cart') {
+        console.log("Redirecting to checkout from cart");
+      } else {
+        console.log("Redirecting to catalog from login");
+      }
 
     }
     catch (error) {

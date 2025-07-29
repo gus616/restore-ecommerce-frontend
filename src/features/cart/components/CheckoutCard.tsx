@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useAppSelector } from "../../../store/store"
 import { formatCurrency } from "../../../utils/utils"
 
@@ -8,12 +8,19 @@ type CheckoutCardProps = {
 }
 const CheckoutCard = ({ productsSelected, subtotal = 0 }: CheckoutCardProps) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { user } = useAppSelector((state) => state.auth);
 
     const checkoutHandler = () => {
+
+        
         if (!user) {
-            navigate("/login");
+            navigate("/login",{
+                state: {
+                    from: location.pathname,
+                }
+            });
             return;
         }
         navigate("/checkout");
