@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { useLoginMutation } from '../api/authApi'
 import { useAppDispatch } from '../../../store/store'
 import { setCredentials } from '../../../store/slices/authSlice'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Login = () => {
   const location = useLocation();
   const from = location.state?.from || '/';
@@ -18,8 +18,7 @@ const Login = () => {
 
   const dispatch = useAppDispatch();
   const [authenticator, setAuthenticator] = useState<string | null>(null);
-
-
+  const navigate = useNavigate();
   const [login, { isLoading: isLogginIn }] = useLoginMutation({});
 
   const loginHandler = async (identifier: string, password: string) => {
@@ -37,7 +36,7 @@ const Login = () => {
       // Handle successful login (e.g., redirect to catalog page or checkout depending on where the user came from)      
 
       if(from === '/cart') {
-        console.log("Redirecting to checkout from cart");
+         navigate('/checkout');
       } else {
         console.log("Redirecting to catalog from login");
       }
