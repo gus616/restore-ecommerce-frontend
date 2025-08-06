@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Card from '../../../components/ui/Card'
 import CheckCard from '../../../components/ui/CheckCard'
 import { useCart } from '../../../hooks/useCart'
@@ -14,6 +14,8 @@ const CheckoutContainer = () => {
     handleSubtract,
     handleRemove, getSubTotal } = useCart();
 
+    const randomCreditCard = useMemo(() => getRandomCreditCardNumber(), []);
+
 
   return (
     <div className="w-[75%] mx-auto mt-1 ">
@@ -21,7 +23,7 @@ const CheckoutContainer = () => {
         {/* Left Column: Address */}
         <div className="col-span-8 flex flex-col gap-4">
           <Card title={user?.userName || ""} description="1234 Elm Street, Springfield, IL 62704" />
-          <Card title={getRandomCreditCardNumber()} description="Credit available" />
+          <Card title={randomCreditCard} description="Credit available" />
 
           <CheckCard onCheck={setAgeVerified} />
 
