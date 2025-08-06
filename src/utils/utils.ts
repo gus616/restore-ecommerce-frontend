@@ -28,3 +28,14 @@ export const getShippingDate = (days: number): string => {
   const month = date.toLocaleString('default', { month: 'short' });
   return `${day} ${month}`;
 }
+
+export const getRandomCreditCardNumber = (): string => {
+  const cardTypes = [
+              { name: "Mastercard", label: "Mastercard" },
+              { name: "Visa", label: "Visa" },
+              { name: "American Express", label: "American Express" }
+            ];
+            const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+            const randomDigits = Math.floor(1000 + Math.random() * 9000);
+  return `${randomType.label} ${randomDigits}`;
+}
