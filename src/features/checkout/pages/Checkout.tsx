@@ -3,10 +3,9 @@ import CheckoutContainer from '../components/CheckoutContainer'
 
 const Checkout = () => {
   return (
-    <div className="w-full min-h-screen bg-gray-200">
+    <div className="w-full min-h-screen bg-gray-200 ">
       <CheckoutNavbar />
       <CheckoutContainer />
-     
     </div>
   )
 }
