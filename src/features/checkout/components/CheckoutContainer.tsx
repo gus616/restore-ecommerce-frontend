@@ -1,14 +1,17 @@
 import Card from '../../../components/ui/Card'
 import CheckCard from '../../../components/ui/CheckCard'
+import { useCart } from '../../../hooks/useCart'
 import { useAppSelector } from '../../../store/store'
 import CheckoutActions from './CheckoutActions'
 import CheckoutDeliveryInfo from './CheckoutDeliveryInfo'
 
 const CheckoutContainer = () => {
   const { user } = useAppSelector((state) => state.auth)
-  const { cartItems } = useAppSelector((state) => state.cart)
+  const { productsSelected, handleAdd,
+    handleSubtract,
+    handleRemove, } = useCart();
 
-  console.log(cartItems);
+
   return (
     <div className="w-[75%] mx-auto mt-1 ">
       <div className="md:grid md:grid-cols-12 gap-10 p-4 bg-gray-200 sm:flex sm:flex-col">
@@ -19,8 +22,8 @@ const CheckoutContainer = () => {
 
           <CheckCard />
 
-          <CheckoutDeliveryInfo />
-          
+          <CheckoutDeliveryInfo products={productsSelected} onAdd={handleAdd} onSubstract={handleSubtract} onRemove={handleRemove} />
+
         </div>
 
         {/* Right Column: Order Summary */}

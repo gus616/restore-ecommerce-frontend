@@ -3,9 +3,9 @@ import Button from "../../../components/ui/Button"
 import type { CartItem } from "../../../models/CartItem"
 import { formatCurrency } from "../../../utils/utils"
 import MiniCartItem from "./MiniCartItem"
-import { useAppDispatch } from "../../../store/store"
-import { addToCart, removeFromCart, updateQuantity } from "../../../store/slices/cartSlice"
+
 import { useNavigate } from "react-router-dom"
+import { useCart } from "../../../hooks/useCart"
 
 
 type MiniCartPanelProps = {
@@ -14,7 +14,7 @@ type MiniCartPanelProps = {
 
 const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
 
-    const dispatch = useAppDispatch();
+    const { handleAdd, handleSubtract, handleRemove, } = useCart();
 
     const navigate = useNavigate();
 
@@ -22,23 +22,6 @@ const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
         return items.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
     }, [items]);
 
-    const handleAdd = (item: CartItem) => {
-        dispatch(addToCart({
-            ...item,
-            quantity: 1
-        }));
-    }
-
-    const handleSubtract = (item: CartItem) => {
-        dispatch(updateQuantity({
-            id: item.id,
-            quantity: item.quantity - 1
-        }));
-    }
-
-    const handleRemove = (item: CartItem) => {
-        dispatch(removeFromCart(item.id));
-    };
 
     return (
         <div className="relative">
@@ -53,8 +36,8 @@ const MiniCartPanel = ({ items }: MiniCartPanelProps) => {
                         <span className="text-xs">Subtotal</span>
                         <span className="font-bold text-red-800">{formatCurrency(getSubtotal())}</span>
                     </div>
-                    <Button label="Go to cart" paddingX="3" paddingY="3" fontSize="xs" width={130} 
-                    onClick={() => navigate("/cart")}
+                    <Button label="Go to cart" paddingX="3" paddingY="3" fontSize="xs" width={130}
+                        onClick={() => navigate("/cart")}
                     />
                 </div>
 
