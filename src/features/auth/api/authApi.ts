@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { User } from '../../../models/User';
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface LoginBody {
   identifier: string;
@@ -26,7 +27,7 @@ interface LoginResponse {
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://localhost:7014/api',
+    baseUrl: apiUrl,
   }),
   endpoints: (build) => ({
     signIn: build.mutation<User, RegisterBody>({
