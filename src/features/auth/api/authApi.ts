@@ -43,6 +43,9 @@ export const authApi = createApi({
         method: 'POST',
         body,
         credentials: 'include', // Include cookies in the request
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }),
     }),
   }),
