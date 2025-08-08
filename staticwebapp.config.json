@@ -1,0 +1,8 @@
+{
+  "build": {
+    "appLocation": "/",
+    "outputLocation": "build",
+    "apiLocation": "",
+    "nodeVersion": "20.19.0"
+  }
+}
