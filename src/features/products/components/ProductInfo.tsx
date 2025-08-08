@@ -1,4 +1,4 @@
-import React from 'react'
+
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils'
 import { Lock, MessageSquareTextIcon, RotateCw, Truck } from 'lucide-react'

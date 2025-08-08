@@ -1,4 +1,3 @@
-import React from 'react'
 import type { CatalogueFilter } from '../../../models/CatalogueFilter'
 import ProductStarRatingStarsContainer from '../../products/components/ProductStarRatingStarsContainer'
 import { formatCurrency } from '../../../utils/utils'

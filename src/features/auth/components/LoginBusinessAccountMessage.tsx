@@ -1,5 +1,3 @@
-import React from 'react'
-
 const LoginBusinessAccountMessage = () => {
     return (
         <div className="flex flex-col items-start justify-center mt-4 gap-2">

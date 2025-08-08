@@ -1,4 +1,3 @@
-import React from 'react'
 import ProductWishlistItem from './ProductWishlistItem'
 import Divider from '../../../components/ui/Divider'
 import { Plus } from 'lucide-react'
