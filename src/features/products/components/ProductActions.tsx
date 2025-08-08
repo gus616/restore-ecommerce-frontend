@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import type { Product } from '../../../models/Product';
 import { formatCurrency } from '../../../utils/utils';
 import { ChevronRight, MapPin } from 'lucide-react';

@@ -1,5 +1,4 @@
-import { StarIcon } from 'lucide-react'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import ProductStarRating from './ProductStarRating';
 import Divider from '../../../components/ui/Divider';
 import ExpandablePanel from '../../../components/ui/ExpandablePanel';

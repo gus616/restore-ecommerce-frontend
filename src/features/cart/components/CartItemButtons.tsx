@@ -1,5 +1,5 @@
 import { LoaderCircle, MinusIcon, PlusIcon, Trash2Icon } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { CartItem } from '../../../models/CartItem'
 
 

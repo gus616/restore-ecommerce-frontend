@@ -4,7 +4,7 @@ import ProductDetail from "../components/ProductDetail";
 import { useGetProductDetailQuery } from "../../api/catalogApi";
 import Layout from "../../../layout/Layout";
 
-const Product = () => {
+const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
 
 
@@ -59,4 +59,4 @@ const [product, setProduct] = useState<Product>();
   )
 }
 
-export default Product
+export default ProductPage
