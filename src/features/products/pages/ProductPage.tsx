@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom"
-import type { Product } from "../../../models/Product";
 import ProductDetail from "../components/ProductDetail";
 import { useGetProductDetailQuery } from "../../api/catalogApi";
 import Layout from "../../../layout/Layout";

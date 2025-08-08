@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import type { Product } from '../../../models/Product'
 import { formatCurrency } from '../../../utils/utils';
-import ProductStarRating from '../../products/components/ProductStarRating';
 import ProductStarRatingStarsContainer from '../../products/components/ProductStarRatingStarsContainer';
 
 

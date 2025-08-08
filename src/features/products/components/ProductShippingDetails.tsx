@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 const ProductShippingDetails = () => {
 
@@ -21,10 +21,10 @@ const ProductShippingDetails = () => {
         <div className="grid grid-cols-2 gap-x-4 gap-y-2 mt-2">
             {
                 visibleItems.map((item, index) => (
-                    <React.Fragment key={index}>
+                    <Fragment key={index}>
                         <div className="text-xs text-gray-600">{item.label}</div>
                         <div className="text-xs">{item.value}</div>
-                    </React.Fragment>
+                    </Fragment>
                 ))
             }
 

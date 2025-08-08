@@ -1,4 +1,3 @@
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { Product } from "../../../models/Product"
 import ProductCard from "./ProductCard"
 import ProductPagination from "../../products/components/ProductPagination"
