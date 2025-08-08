@@ -16,12 +16,12 @@ interface RegisterBody {
 }
 
 interface LoginResponse {
-  succeeded: boolean,
-  errors: string[],
-  token: string,
-  email: string,
-  phoneNumber: string
-  userName: string
+  succeeded: boolean;
+  errors: string[];
+  token: string;
+  email: string;
+  phoneNumber: string;
+  userName: string;
 }
 
 export const authApi = createApi({
@@ -42,6 +42,7 @@ export const authApi = createApi({
         url: '/Account/login',
         method: 'POST',
         body,
+        credentials: 'include', // Include cookies in the request
       }),
     }),
   }),
