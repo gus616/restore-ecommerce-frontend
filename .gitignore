@@ -54,3 +54,5 @@ pnpm-debug.log*
 
 # Optional: eslint cache
 .eslintcache
+# Optional: npm config files
+.npmrc
