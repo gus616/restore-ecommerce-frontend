@@ -1,10 +1,23 @@
+import { useState } from "react";
 import Layout from "../../../layout/Layout";
 import { useGetFiltersQuery, useGetProductsQuery } from "../../api/catalogApi";
 import FilterMenu from "../components/FilterMenu";
 import ProductList from "../components/ProductList";
 
 const Catalog = () => {
-  const { data, isLoading, isError } = useGetProductsQuery();
+
+  const [pageNumber, setPageNumber] = useState(1)
+
+  const { data, isLoading, isError } = useGetProductsQuery({
+    pageSize: 10,
+    pageNumber: pageNumber
+  });
+
+  const paginationHandler = (page: number) => {
+    setPageNumber(page);
+    window.scrollTo(0, 0); // Scroll to top when page changes
+  }
+
 
   const products = data?.items || [];
   const { data: filters } = useGetFiltersQuery();
@@ -24,7 +37,9 @@ const Catalog = () => {
           <FilterMenu filter={filters} />
         </div>
         <div className="md:col-span-10">
-          <ProductList products={products} />
+          <ProductList products={products} paginationHandler={paginationHandler}
+           totalCount={data?.totalCount || 0} pageNumber={pageNumber} pageSize={10}
+          />
         </div>
       </div>
     </Layout>

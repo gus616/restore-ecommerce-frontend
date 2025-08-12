@@ -2,13 +2,16 @@ import type { Product } from "../../../models/Product"
 import ProductCard from "./ProductCard"
 import ProductPagination from "../../products/components/ProductPagination"
 
-
-
 type ProductListProps = {
   products: Product[]
+  pageSize?: number
+  pageNumber: number
+  totalCount: number
+  paginationHandler?: (page: number) => void
 }
 
-const ProductList = ({ products }: ProductListProps) => {
+const ProductList = ({ products, pageNumber = 1, pageSize = 5, paginationHandler, totalCount}: ProductListProps) => {
+
 
   if (!products || products.length === 0) {
     return (
@@ -29,7 +32,7 @@ const ProductList = ({ products }: ProductListProps) => {
         }
       </div>
       {/*Pagination */}
-      <ProductPagination paginationSize={5} currentPage={1} />
+      <ProductPagination pageSize={pageSize} pageNumber={pageNumber} paginationHandler={paginationHandler} totalCount={totalCount}/>
     </section>
 
   )

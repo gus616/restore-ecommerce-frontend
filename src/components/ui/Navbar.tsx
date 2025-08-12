@@ -15,7 +15,6 @@ const Navbar = () => {
 
 
 
-  console.log('Cart items:', items);
   // Calculate total items in cart
 
   const totalCartItems = useMemo(() => {

@@ -10,8 +10,8 @@ export const catalogApi = createApi({
     baseUrl: apiUrl,
   }),
   endpoints: (build) => ({
-    getProducts: build.query<PaginatedResult<Product[]>, void>({
-      query: () => `/Products`,
+    getProducts: build.query<PaginatedResult<Product>, { pageSize?: number; pageNumber?: number }>({
+      query: ({ pageSize = 8, pageNumber = 1 } = {}) => `/Products?pageSize=${pageSize}&pageNumber=${pageNumber}`,
     }),
     getProductDetail: build.query<Product, string>({
       query: (id: string) => `/Products/${id}`,

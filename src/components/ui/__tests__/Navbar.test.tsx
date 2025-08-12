@@ -30,7 +30,6 @@ describe('Navbar', () => {
         render(<Navbar />);
         const menuButton = screen.getByRole('button', {name: /menu/i});
 
-        console.log(menuButton);
         expect(menuButton).toBeInTheDocument();
 
         fireEvent.click(menuButton);
