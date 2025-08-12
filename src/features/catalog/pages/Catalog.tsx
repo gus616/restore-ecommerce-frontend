@@ -4,7 +4,9 @@ import FilterMenu from "../components/FilterMenu";
 import ProductList from "../components/ProductList";
 
 const Catalog = () => {
-  const { data: products, isLoading, isError } = useGetProductsQuery();
+  const { data, isLoading, isError } = useGetProductsQuery();
+
+  const products = data?.items || [];
   const { data: filters } = useGetFiltersQuery();
 
   if (isLoading) {

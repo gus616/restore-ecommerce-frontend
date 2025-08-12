@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { Product } from '../../models/Product';
 import type { CatalogueFilter } from '../../models/CatalogueFilter';
+import type { PaginatedResult } from '../../models/PaginatedResult';
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const catalogApi = createApi({
@@ -9,7 +10,7 @@ export const catalogApi = createApi({
     baseUrl: apiUrl,
   }),
   endpoints: (build) => ({
-    getProducts: build.query<Product[], void>({
+    getProducts: build.query<PaginatedResult<Product[]>, void>({
       query: () => `/Products`,
     }),
     getProductDetail: build.query<Product, string>({
