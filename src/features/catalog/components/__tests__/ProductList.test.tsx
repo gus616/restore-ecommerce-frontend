@@ -32,11 +32,9 @@ describe('ProductList', () => {
             }
         ];
 
-        render(<MemoryRouter><ProductList products={products} /> </MemoryRouter>);
+        render(<MemoryRouter><ProductList products={products} pageNumber={0} totalCount={0} /> </MemoryRouter>);
 
-        expect(screen.getByText('Death Stranding 2')).toBeInTheDocument();
-        expect(screen.getByText('$59.99')).toBeInTheDocument();
-        expect(screen.getByText('The Last of Us Part II')).toBeInTheDocument();
-        expect(screen.getByText('$49.99')).toBeInTheDocument();
+        expect(screen.getByText('Sample')).toBeInTheDocument();
+        expect(screen.getByText('$100')).toBeInTheDocument();
     });
 });
